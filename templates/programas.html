@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% include."empresa.html"%}
+{% block title %}Buscar Alumnos {% endblock %}
+{% block content %}
+
+
+<form id='formulario'method='post'enctype='multipart/form-data'action=''>{% csrf_token %}
+<br><br><TABLE BORDER=2 WIDTH=250>
+	<td>{{formulario.as_p}}</td>
+</table>
+	<button class="btn btn-success">Agregar</button>
+	<!--<p><input type='submit'value='Confirmar'/></p>!-->
+</form>	
+
+{% endblock %}

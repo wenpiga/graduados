@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% extends 'base.html' %}
+{% block title %} Reportes Fecha {% endblock %}
+{% block content %}
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<head>
+	<table class="table table-bordered ">
+
+   	 <title>Consulta</title>
+
+		<body>
+    		<h2>Generar Reporte Por Fechas</h2>
+    		<form action="." method="POST">
+    			{% csrf_token %}
+        		<table>
+           	 		{{ form.as_table }}
+        		</table>
+        		<a class="btn btn-info" href="/consultas"><span class="glyphicon glyphicon-wrench"></span> Generar</a></td>
+        
+    		</form>
+		</body>
+	<table>
+</head>
+</html>
+	
+    
+{% endblock %}
