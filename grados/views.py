@@ -7,7 +7,7 @@ from helpers import vista
 
 from django.contrib.contenttypes.models import ContentType
 
-import ho.pisa as pisa
+#import ho.pisa as pisa
 import cStringIO as StringIO
 import cgi
 from django.template.loader import render_to_string 
@@ -19,7 +19,7 @@ from django.template import RequestContext
 from grados.models import Alumno,Programa
 from grados.forms import ContactForm,AddAlumnoForm,LoginForm,AlumnoForm,ProgramaForm,Miformulario,ConsultaForm
 
-from django.utils import simplejson
+#from django.utils import simplejson
 from django.utils.safestring import mark_safe
 #imports para la paginacion
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
@@ -29,15 +29,15 @@ from django.contrib.auth import login,logout,authenticate
 from django.core.paginator import Paginator,EmptyPage,InvalidPage
 # para buscar datos
 from django.db.models import Q
-from reportlab.pdfgen import canvas
+#from reportlab.pdfgen import canvas
 from io import BytesIO
 from django.views.generic import ListView
-from reportlab.lib.pagesizes import letter
+#from reportlab.lib.pagesizes import letter
 from django.contrib.auth.decorators import login_required
 import django
 
-from reportlab.platypus.doctemplate import SimpleDocTemplate
-from reportlab.platypus import Paragraph, Spacer
+#from reportlab.platypus.doctemplate import SimpleDocTemplate
+#from reportlab.platypus import Paragraph, Spacer
 #from reportlab.lib import sytles
 from django.db.models import F
 
@@ -266,8 +266,10 @@ def pdf(f):
     def vista(request, *args, **kwargs):
         response = f(request, *args, **kwargs)
         result = StringIO.StringIO()
-        pdf = pisa.pisaDocument(StringIO.StringIO(response.encode("UTF-8")), result)
-        if not pdf.err:
+        #pdf = pisa.pisaDocument(StringIO.StringIO(response.encode("UTF-8")), result)
+	pdf = None
+        
+	if not pdf.err:
             response = HttpResponse(result.getvalue(), content_type='application/pdf')
             return response
         return HttpResponse('Error al generar el PDF: %s' % cgi.escape(response))
